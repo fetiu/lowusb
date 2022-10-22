@@ -1,0 +1,39 @@
+XH3
+H A areas 5 global symbols
+M ispunct
+O -mstm8
+S _isspace Ref000000
+S _isalnum Ref000000
+S .__.ABS. Def000000
+S _isprint Ref000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 2D flags 0 addr 0
+S _ispunct Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 1E 03 89 CD 00 00 5B 02 5D 27 16 1E 03
+R 00 00 00 07 02 07 00 03
+T 00 00 0D 89 CD 00 00 5B 02 5D 26 0B 1E 03 89 CD
+R 00 00 00 07 02 05 00 00
+T 00 00 1A 00 00 5B 02 5D 27 03
+R 00 00 00 07 02 03 00 01
+T 00 00 21
+R 00 00 00 07
+T 00 00 21 4F 20 02
+R 00 00 00 07
+T 00 00 24
+R 00 00 00 07
+T 00 00 24 A6 01
+R 00 00 00 07
+T 00 00 26
+R 00 00 00 07
+T 00 00 26 97 49 4F A2 00 95 81
+R 00 00 00 07

@@ -1,0 +1,305 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.4.1 #9092 (Oct 23 2022) (Mac OS X x86_64)
+                                      4 ; This file was generated Sun Oct 23 01:38:11 2022
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _free
+                                      7 	.optsdcc -mmcs51 --model-large
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl __sdcc_find_memheader
+                                     13 	.globl __sdcc_prev_memheader
+                                     14 	.globl _free
+                                     15 ;--------------------------------------------------------
+                                     16 ; special function registers
+                                     17 ;--------------------------------------------------------
+                                     18 	.area RSEG    (ABS,DATA)
+      000000                         19 	.org 0x0000
+                                     20 ;--------------------------------------------------------
+                                     21 ; special function bits
+                                     22 ;--------------------------------------------------------
+                                     23 	.area RSEG    (ABS,DATA)
+      000000                         24 	.org 0x0000
+                                     25 ;--------------------------------------------------------
+                                     26 ; overlayable register banks
+                                     27 ;--------------------------------------------------------
+                                     28 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         29 	.ds 8
+                                     30 ;--------------------------------------------------------
+                                     31 ; internal ram data
+                                     32 ;--------------------------------------------------------
+                                     33 	.area DSEG    (DATA)
+                                     34 ;--------------------------------------------------------
+                                     35 ; overlayable items in internal ram 
+                                     36 ;--------------------------------------------------------
+                                     37 ;--------------------------------------------------------
+                                     38 ; indirectly addressable internal ram data
+                                     39 ;--------------------------------------------------------
+                                     40 	.area ISEG    (DATA)
+                                     41 ;--------------------------------------------------------
+                                     42 ; absolute internal ram data
+                                     43 ;--------------------------------------------------------
+                                     44 	.area IABS    (ABS,DATA)
+                                     45 	.area IABS    (ABS,DATA)
+                                     46 ;--------------------------------------------------------
+                                     47 ; bit data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area BSEG    (BIT)
+                                     50 ;--------------------------------------------------------
+                                     51 ; paged external ram data
+                                     52 ;--------------------------------------------------------
+                                     53 	.area PSEG    (PAG,XDATA)
+                                     54 ;--------------------------------------------------------
+                                     55 ; external ram data
+                                     56 ;--------------------------------------------------------
+                                     57 	.area XSEG    (XDATA)
+      000000                         58 __sdcc_prev_memheader::
+      000000                         59 	.ds 2
+      000002                         60 __sdcc_find_memheader_p_1_5:
+      000002                         61 	.ds 2
+      000004                         62 __sdcc_find_memheader_cur_header_1_6:
+      000004                         63 	.ds 2
+      000006                         64 _free_p_1_8:
+      000006                         65 	.ds 3
+                                     66 ;--------------------------------------------------------
+                                     67 ; absolute external ram data
+                                     68 ;--------------------------------------------------------
+                                     69 	.area XABS    (ABS,XDATA)
+                                     70 ;--------------------------------------------------------
+                                     71 ; external initialized ram data
+                                     72 ;--------------------------------------------------------
+                                     73 	.area XISEG   (XDATA)
+                                     74 	.area HOME    (CODE)
+                                     75 	.area GSINIT0 (CODE)
+                                     76 	.area GSINIT1 (CODE)
+                                     77 	.area GSINIT2 (CODE)
+                                     78 	.area GSINIT3 (CODE)
+                                     79 	.area GSINIT4 (CODE)
+                                     80 	.area GSINIT5 (CODE)
+                                     81 	.area GSINIT  (CODE)
+                                     82 	.area GSFINAL (CODE)
+                                     83 	.area CSEG    (CODE)
+                                     84 ;--------------------------------------------------------
+                                     85 ; global & static initialisations
+                                     86 ;--------------------------------------------------------
+                                     87 	.area HOME    (CODE)
+                                     88 	.area GSINIT  (CODE)
+                                     89 	.area GSFINAL (CODE)
+                                     90 	.area GSINIT  (CODE)
+                                     91 ;--------------------------------------------------------
+                                     92 ; Home
+                                     93 ;--------------------------------------------------------
+                                     94 	.area HOME    (CODE)
+                                     95 	.area HOME    (CODE)
+                                     96 ;--------------------------------------------------------
+                                     97 ; code
+                                     98 ;--------------------------------------------------------
+                                     99 	.area CSEG    (CODE)
+                                    100 ;------------------------------------------------------------
+                                    101 ;Allocation info for local variables in function '_sdcc_find_memheader'
+                                    102 ;------------------------------------------------------------
+                                    103 ;p                         Allocated with name '__sdcc_find_memheader_p_1_5'
+                                    104 ;pthis                     Allocated with name '__sdcc_find_memheader_pthis_1_6'
+                                    105 ;cur_header                Allocated with name '__sdcc_find_memheader_cur_header_1_6'
+                                    106 ;------------------------------------------------------------
+                                    107 ;	_free.c:129: MEMHEADER __xdata * _sdcc_find_memheader(void __xdata * p)
+                                    108 ;	-----------------------------------------
+                                    109 ;	 function _sdcc_find_memheader
+                                    110 ;	-----------------------------------------
+      000000                        111 __sdcc_find_memheader:
+                           000007   112 	ar7 = 0x07
+                           000006   113 	ar6 = 0x06
+                           000005   114 	ar5 = 0x05
+                           000004   115 	ar4 = 0x04
+                           000003   116 	ar3 = 0x03
+                           000002   117 	ar2 = 0x02
+                           000001   118 	ar1 = 0x01
+                           000000   119 	ar0 = 0x00
+      000000 AF 83            [24]  120 	mov	r7,dph
+      000002 E5 82            [12]  121 	mov	a,dpl
+      000004 90r00r02         [24]  122 	mov	dptr,#__sdcc_find_memheader_p_1_5
+      000007 F0               [24]  123 	movx	@dptr,a
+      000008 EF               [12]  124 	mov	a,r7
+      000009 A3               [24]  125 	inc	dptr
+      00000A F0               [24]  126 	movx	@dptr,a
+                                    127 ;	_free.c:134: if (!p)
+      00000B 90r00r02         [24]  128 	mov	dptr,#__sdcc_find_memheader_p_1_5
+      00000E E0               [24]  129 	movx	a,@dptr
+      00000F FE               [12]  130 	mov	r6,a
+      000010 A3               [24]  131 	inc	dptr
+      000011 E0               [24]  132 	movx	a,@dptr
+      000012 FF               [12]  133 	mov	r7,a
+      000013 90r00r02         [24]  134 	mov	dptr,#__sdcc_find_memheader_p_1_5
+      000016 E0               [24]  135 	movx	a,@dptr
+      000017 F5 F0            [12]  136 	mov	b,a
+      000019 A3               [24]  137 	inc	dptr
+      00001A E0               [24]  138 	movx	a,@dptr
+      00001B 45 F0            [12]  139 	orl	a,b
+      00001D 70 04            [24]  140 	jnz	00102$
+                                    141 ;	_free.c:135: return NULL;
+      00001F 90 00 00         [24]  142 	mov	dptr,#0x0000
+      000022 22               [24]  143 	ret
+      000023                        144 00102$:
+                                    145 ;	_free.c:136: pthis = (MEMHEADER __xdata *) p;
+                                    146 ;	_free.c:137: pthis -= 1; //to start of header
+      000023 EE               [12]  147 	mov	a,r6
+      000024 24 FC            [12]  148 	add	a,#0xFC
+      000026 FE               [12]  149 	mov	r6,a
+      000027 EF               [12]  150 	mov	a,r7
+      000028 34 FF            [12]  151 	addc	a,#0xFF
+      00002A FF               [12]  152 	mov	r7,a
+                                    153 ;	_free.c:138: cur_header = _sdcc_first_memheader;
+      00002B 90r00r00         [24]  154 	mov	dptr,#__sdcc_first_memheader
+      00002E E0               [24]  155 	movx	a,@dptr
+      00002F FC               [12]  156 	mov	r4,a
+      000030 A3               [24]  157 	inc	dptr
+      000031 E0               [24]  158 	movx	a,@dptr
+      000032 FD               [12]  159 	mov	r5,a
+      000033 90r00r04         [24]  160 	mov	dptr,#__sdcc_find_memheader_cur_header_1_6
+      000036 EC               [12]  161 	mov	a,r4
+      000037 F0               [24]  162 	movx	@dptr,a
+      000038 ED               [12]  163 	mov	a,r5
+      000039 A3               [24]  164 	inc	dptr
+      00003A F0               [24]  165 	movx	@dptr,a
+                                    166 ;	_free.c:139: _sdcc_prev_memheader = NULL;
+      00003B 90r00r00         [24]  167 	mov	dptr,#__sdcc_prev_memheader
+      00003E E4               [12]  168 	clr	a
+      00003F F0               [24]  169 	movx	@dptr,a
+      000040 A3               [24]  170 	inc	dptr
+      000041 F0               [24]  171 	movx	@dptr,a
+                                    172 ;	_free.c:140: while (cur_header && pthis != cur_header)
+      000042                        173 00104$:
+      000042 90r00r04         [24]  174 	mov	dptr,#__sdcc_find_memheader_cur_header_1_6
+      000045 E0               [24]  175 	movx	a,@dptr
+      000046 FC               [12]  176 	mov	r4,a
+      000047 A3               [24]  177 	inc	dptr
+      000048 E0               [24]  178 	movx	a,@dptr
+      000049 FD               [12]  179 	mov	r5,a
+      00004A 4C               [12]  180 	orl	a,r4
+      00004B 60 25            [24]  181 	jz	00106$
+      00004D EE               [12]  182 	mov	a,r6
+      00004E B5 04 06         [24]  183 	cjne	a,ar4,00123$
+      000051 EF               [12]  184 	mov	a,r7
+      000052 B5 05 02         [24]  185 	cjne	a,ar5,00123$
+      000055 80 1B            [24]  186 	sjmp	00106$
+      000057                        187 00123$:
+                                    188 ;	_free.c:142: _sdcc_prev_memheader = cur_header;
+      000057 90r00r00         [24]  189 	mov	dptr,#__sdcc_prev_memheader
+      00005A EC               [12]  190 	mov	a,r4
+      00005B F0               [24]  191 	movx	@dptr,a
+      00005C ED               [12]  192 	mov	a,r5
+      00005D A3               [24]  193 	inc	dptr
+      00005E F0               [24]  194 	movx	@dptr,a
+                                    195 ;	_free.c:143: cur_header = cur_header->next;
+      00005F 8C 82            [24]  196 	mov	dpl,r4
+      000061 8D 83            [24]  197 	mov	dph,r5
+      000063 E0               [24]  198 	movx	a,@dptr
+      000064 FC               [12]  199 	mov	r4,a
+      000065 A3               [24]  200 	inc	dptr
+      000066 E0               [24]  201 	movx	a,@dptr
+      000067 FD               [12]  202 	mov	r5,a
+      000068 90r00r04         [24]  203 	mov	dptr,#__sdcc_find_memheader_cur_header_1_6
+      00006B EC               [12]  204 	mov	a,r4
+      00006C F0               [24]  205 	movx	@dptr,a
+      00006D ED               [12]  206 	mov	a,r5
+      00006E A3               [24]  207 	inc	dptr
+      00006F F0               [24]  208 	movx	@dptr,a
+      000070 80 D0            [24]  209 	sjmp	00104$
+      000072                        210 00106$:
+                                    211 ;	_free.c:145: return (cur_header);
+      000072 90r00r04         [24]  212 	mov	dptr,#__sdcc_find_memheader_cur_header_1_6
+      000075 E0               [24]  213 	movx	a,@dptr
+      000076 FE               [12]  214 	mov	r6,a
+      000077 A3               [24]  215 	inc	dptr
+      000078 E0               [24]  216 	movx	a,@dptr
+      000079 8E 82            [24]  217 	mov	dpl,r6
+      00007B F5 83            [12]  218 	mov	dph,a
+      00007D 22               [24]  219 	ret
+                                    220 ;------------------------------------------------------------
+                                    221 ;Allocation info for local variables in function 'free'
+                                    222 ;------------------------------------------------------------
+                                    223 ;p                         Allocated with name '_free_p_1_8'
+                                    224 ;pthis                     Allocated with name '_free_pthis_1_9'
+                                    225 ;------------------------------------------------------------
+                                    226 ;	_free.c:148: void free (void * p)
+                                    227 ;	-----------------------------------------
+                                    228 ;	 function free
+                                    229 ;	-----------------------------------------
+      00007E                        230 _free:
+      00007E AF F0            [24]  231 	mov	r7,b
+      000080 AE 83            [24]  232 	mov	r6,dph
+      000082 E5 82            [12]  233 	mov	a,dpl
+      000084 90r00r06         [24]  234 	mov	dptr,#_free_p_1_8
+      000087 F0               [24]  235 	movx	@dptr,a
+      000088 EE               [12]  236 	mov	a,r6
+      000089 A3               [24]  237 	inc	dptr
+      00008A F0               [24]  238 	movx	@dptr,a
+      00008B EF               [12]  239 	mov	a,r7
+      00008C A3               [24]  240 	inc	dptr
+      00008D F0               [24]  241 	movx	@dptr,a
+                                    242 ;	_free.c:154: pthis = _sdcc_find_memheader(p);
+      00008E 90r00r06         [24]  243 	mov	dptr,#_free_p_1_8
+      000091 E0               [24]  244 	movx	a,@dptr
+      000092 FD               [12]  245 	mov	r5,a
+      000093 A3               [24]  246 	inc	dptr
+      000094 E0               [24]  247 	movx	a,@dptr
+      000095 FE               [12]  248 	mov	r6,a
+      000096 A3               [24]  249 	inc	dptr
+      000097 E0               [24]  250 	movx	a,@dptr
+      000098 8D 82            [24]  251 	mov	dpl,r5
+      00009A 8E 83            [24]  252 	mov	dph,r6
+      00009C 12r00r00         [24]  253 	lcall	__sdcc_find_memheader
+      00009F AE 82            [24]  254 	mov	r6,dpl
+      0000A1 AF 83            [24]  255 	mov	r7,dph
+                                    256 ;	_free.c:155: if (pthis) //For allocated pointers only!
+      0000A3 EE               [12]  257 	mov	a,r6
+      0000A4 4F               [12]  258 	orl	a,r7
+      0000A5 60 31            [24]  259 	jz	00106$
+                                    260 ;	_free.c:157: if (!_sdcc_prev_memheader)
+      0000A7 90r00r00         [24]  261 	mov	dptr,#__sdcc_prev_memheader
+      0000AA E0               [24]  262 	movx	a,@dptr
+      0000AB FC               [12]  263 	mov	r4,a
+      0000AC A3               [24]  264 	inc	dptr
+      0000AD E0               [24]  265 	movx	a,@dptr
+      0000AE FD               [12]  266 	mov	r5,a
+      0000AF 90r00r00         [24]  267 	mov	dptr,#__sdcc_prev_memheader
+      0000B2 E0               [24]  268 	movx	a,@dptr
+      0000B3 F5 F0            [12]  269 	mov	b,a
+      0000B5 A3               [24]  270 	inc	dptr
+      0000B6 E0               [24]  271 	movx	a,@dptr
+      0000B7 45 F0            [12]  272 	orl	a,b
+      0000B9 70 0B            [24]  273 	jnz	00102$
+                                    274 ;	_free.c:159: pthis->len = 0;
+      0000BB 8E 82            [24]  275 	mov	dpl,r6
+      0000BD 8F 83            [24]  276 	mov	dph,r7
+      0000BF A3               [24]  277 	inc	dptr
+      0000C0 A3               [24]  278 	inc	dptr
+      0000C1 E4               [12]  279 	clr	a
+      0000C2 F0               [24]  280 	movx	@dptr,a
+      0000C3 A3               [24]  281 	inc	dptr
+      0000C4 F0               [24]  282 	movx	@dptr,a
+      0000C5 22               [24]  283 	ret
+      0000C6                        284 00102$:
+                                    285 ;	_free.c:163: _sdcc_prev_memheader->next = pthis->next;
+      0000C6 8E 82            [24]  286 	mov	dpl,r6
+      0000C8 8F 83            [24]  287 	mov	dph,r7
+      0000CA E0               [24]  288 	movx	a,@dptr
+      0000CB FE               [12]  289 	mov	r6,a
+      0000CC A3               [24]  290 	inc	dptr
+      0000CD E0               [24]  291 	movx	a,@dptr
+      0000CE FF               [12]  292 	mov	r7,a
+      0000CF 8C 82            [24]  293 	mov	dpl,r4
+      0000D1 8D 83            [24]  294 	mov	dph,r5
+      0000D3 EE               [12]  295 	mov	a,r6
+      0000D4 F0               [24]  296 	movx	@dptr,a
+      0000D5 EF               [12]  297 	mov	a,r7
+      0000D6 A3               [24]  298 	inc	dptr
+      0000D7 F0               [24]  299 	movx	@dptr,a
+      0000D8                        300 00106$:
+      0000D8 22               [24]  301 	ret
+                                    302 	.area CSEG    (CODE)
+                                    303 	.area CONST   (CODE)
+                                    304 	.area XINIT   (CODE)
+                                    305 	.area CABS    (ABS,CODE)

@@ -1,0 +1,530 @@
+                                      1 ;--------------------------------------------------------
+                                      2 ; File Created by SDCC : free open source ANSI-C Compiler
+                                      3 ; Version 3.4.1 #9092 (Oct 23 2022) (Mac OS X x86_64)
+                                      4 ; This file was generated Sun Oct 23 01:37:38 2022
+                                      5 ;--------------------------------------------------------
+                                      6 	.module _atof
+                                      7 	.optsdcc -mmcs51 --model-small
+                                      8 	
+                                      9 ;--------------------------------------------------------
+                                     10 ; Public variables in this module
+                                     11 ;--------------------------------------------------------
+                                     12 	.globl _atoi
+                                     13 	.globl _toupper
+                                     14 	.globl _isspace
+                                     15 	.globl _atof
+                                     16 ;--------------------------------------------------------
+                                     17 ; special function registers
+                                     18 ;--------------------------------------------------------
+                                     19 	.area RSEG    (ABS,DATA)
+      000000                         20 	.org 0x0000
+                                     21 ;--------------------------------------------------------
+                                     22 ; special function bits
+                                     23 ;--------------------------------------------------------
+                                     24 	.area RSEG    (ABS,DATA)
+      000000                         25 	.org 0x0000
+                                     26 ;--------------------------------------------------------
+                                     27 ; overlayable register banks
+                                     28 ;--------------------------------------------------------
+                                     29 	.area REG_BANK_0	(REL,OVR,DATA)
+      000000                         30 	.ds 8
+                                     31 ;--------------------------------------------------------
+                                     32 ; internal ram data
+                                     33 ;--------------------------------------------------------
+                                     34 	.area DSEG    (DATA)
+      000000                         35 _atof_s_1_35:
+      000000                         36 	.ds 3
+      000003                         37 _atof_value_1_36:
+      000003                         38 	.ds 4
+      000007                         39 _atof_fraction_1_36:
+      000007                         40 	.ds 4
+      00000B                         41 _atof_sloc0_1_0:
+      00000B                         42 	.ds 4
+                                     43 ;--------------------------------------------------------
+                                     44 ; overlayable items in internal ram 
+                                     45 ;--------------------------------------------------------
+                                     46 ;--------------------------------------------------------
+                                     47 ; indirectly addressable internal ram data
+                                     48 ;--------------------------------------------------------
+                                     49 	.area ISEG    (DATA)
+                                     50 ;--------------------------------------------------------
+                                     51 ; absolute internal ram data
+                                     52 ;--------------------------------------------------------
+                                     53 	.area IABS    (ABS,DATA)
+                                     54 	.area IABS    (ABS,DATA)
+                                     55 ;--------------------------------------------------------
+                                     56 ; bit data
+                                     57 ;--------------------------------------------------------
+                                     58 	.area BSEG    (BIT)
+      000000                         59 _atof_sign_1_36:
+      000000                         60 	.ds 1
+                                     61 ;--------------------------------------------------------
+                                     62 ; paged external ram data
+                                     63 ;--------------------------------------------------------
+                                     64 	.area PSEG    (PAG,XDATA)
+                                     65 ;--------------------------------------------------------
+                                     66 ; external ram data
+                                     67 ;--------------------------------------------------------
+                                     68 	.area XSEG    (XDATA)
+                                     69 ;--------------------------------------------------------
+                                     70 ; absolute external ram data
+                                     71 ;--------------------------------------------------------
+                                     72 	.area XABS    (ABS,XDATA)
+                                     73 ;--------------------------------------------------------
+                                     74 ; external initialized ram data
+                                     75 ;--------------------------------------------------------
+                                     76 	.area XISEG   (XDATA)
+                                     77 	.area HOME    (CODE)
+                                     78 	.area GSINIT0 (CODE)
+                                     79 	.area GSINIT1 (CODE)
+                                     80 	.area GSINIT2 (CODE)
+                                     81 	.area GSINIT3 (CODE)
+                                     82 	.area GSINIT4 (CODE)
+                                     83 	.area GSINIT5 (CODE)
+                                     84 	.area GSINIT  (CODE)
+                                     85 	.area GSFINAL (CODE)
+                                     86 	.area CSEG    (CODE)
+                                     87 ;--------------------------------------------------------
+                                     88 ; global & static initialisations
+                                     89 ;--------------------------------------------------------
+                                     90 	.area HOME    (CODE)
+                                     91 	.area GSINIT  (CODE)
+                                     92 	.area GSFINAL (CODE)
+                                     93 	.area GSINIT  (CODE)
+                                     94 ;--------------------------------------------------------
+                                     95 ; Home
+                                     96 ;--------------------------------------------------------
+                                     97 	.area HOME    (CODE)
+                                     98 	.area HOME    (CODE)
+                                     99 ;--------------------------------------------------------
+                                    100 ; code
+                                    101 ;--------------------------------------------------------
+                                    102 	.area CSEG    (CODE)
+                                    103 ;------------------------------------------------------------
+                                    104 ;Allocation info for local variables in function 'atof'
+                                    105 ;------------------------------------------------------------
+                                    106 ;s                         Allocated with name '_atof_s_1_35'
+                                    107 ;value                     Allocated with name '_atof_value_1_36'
+                                    108 ;fraction                  Allocated with name '_atof_fraction_1_36'
+                                    109 ;iexp                      Allocated to registers r6 
+                                    110 ;sloc0                     Allocated with name '_atof_sloc0_1_0'
+                                    111 ;------------------------------------------------------------
+                                    112 ;	_atof.c:33: float atof(const char * s)
+                                    113 ;	-----------------------------------------
+                                    114 ;	 function atof
+                                    115 ;	-----------------------------------------
+      000000                        116 _atof:
+                           000007   117 	ar7 = 0x07
+                           000006   118 	ar6 = 0x06
+                           000005   119 	ar5 = 0x05
+                           000004   120 	ar4 = 0x04
+                           000003   121 	ar3 = 0x03
+                           000002   122 	ar2 = 0x02
+                           000001   123 	ar1 = 0x01
+                           000000   124 	ar0 = 0x00
+      000000 85 82*00         [24]  125 	mov	_atof_s_1_35,dpl
+      000003 85 83*01         [24]  126 	mov	(_atof_s_1_35 + 1),dph
+      000006 85 F0*02         [24]  127 	mov	(_atof_s_1_35 + 2),b
+                                    128 ;	_atof.c:40: while (isspace(*s)) s++;
+      000009 AA*00            [24]  129 	mov	r2,_atof_s_1_35
+      00000B AB*01            [24]  130 	mov	r3,(_atof_s_1_35 + 1)
+      00000D AC*02            [24]  131 	mov	r4,(_atof_s_1_35 + 2)
+      00000F                        132 00101$:
+      00000F 8A 82            [24]  133 	mov	dpl,r2
+      000011 8B 83            [24]  134 	mov	dph,r3
+      000013 8C F0            [24]  135 	mov	b,r4
+      000015 12r00r00         [24]  136 	lcall	__gptrget
+      000018 F8               [12]  137 	mov	r0,a
+      000019 33               [12]  138 	rlc	a
+      00001A 95 E0            [12]  139 	subb	a,acc
+      00001C F9               [12]  140 	mov	r1,a
+      00001D 88 82            [24]  141 	mov	dpl,r0
+      00001F 89 83            [24]  142 	mov	dph,r1
+      000021 C0 04            [24]  143 	push	ar4
+      000023 C0 03            [24]  144 	push	ar3
+      000025 C0 02            [24]  145 	push	ar2
+      000027 12r00r00         [24]  146 	lcall	_isspace
+      00002A E5 82            [12]  147 	mov	a,dpl
+      00002C 85 83 F0         [24]  148 	mov	b,dph
+      00002F D0 02            [24]  149 	pop	ar2
+      000031 D0 03            [24]  150 	pop	ar3
+      000033 D0 04            [24]  151 	pop	ar4
+      000035 45 F0            [12]  152 	orl	a,b
+      000037 60 07            [24]  153 	jz	00145$
+      000039 0A               [12]  154 	inc	r2
+      00003A BA 00 D2         [24]  155 	cjne	r2,#0x00,00101$
+      00003D 0B               [12]  156 	inc	r3
+      00003E 80 CF            [24]  157 	sjmp	00101$
+      000040                        158 00145$:
+      000040 8A*00            [24]  159 	mov	_atof_s_1_35,r2
+      000042 8B*01            [24]  160 	mov	(_atof_s_1_35 + 1),r3
+      000044 8C*02            [24]  161 	mov	(_atof_s_1_35 + 2),r4
+                                    162 ;	_atof.c:43: if (*s == '-')
+      000046 8A 82            [24]  163 	mov	dpl,r2
+      000048 8B 83            [24]  164 	mov	dph,r3
+      00004A 8C F0            [24]  165 	mov	b,r4
+      00004C 12r00r00         [24]  166 	lcall	__gptrget
+      00004F F9               [12]  167 	mov	r1,a
+      000050 B9 2D 0F         [24]  168 	cjne	r1,#0x2D,00107$
+                                    169 ;	_atof.c:45: sign=1;
+      000053 D2*00            [12]  170 	setb	_atof_sign_1_36
+                                    171 ;	_atof.c:46: s++;
+      000055 74 01            [12]  172 	mov	a,#0x01
+      000057 2A               [12]  173 	add	a,r2
+      000058 F5*00            [12]  174 	mov	_atof_s_1_35,a
+      00005A E4               [12]  175 	clr	a
+      00005B 3B               [12]  176 	addc	a,r3
+      00005C F5*01            [12]  177 	mov	(_atof_s_1_35 + 1),a
+      00005E 8C*02            [24]  178 	mov	(_atof_s_1_35 + 2),r4
+      000060 80 10            [24]  179 	sjmp	00108$
+      000062                        180 00107$:
+                                    181 ;	_atof.c:50: sign=0;
+      000062 C2*00            [12]  182 	clr	_atof_sign_1_36
+                                    183 ;	_atof.c:51: if (*s == '+') s++;
+      000064 B9 2B 0B         [24]  184 	cjne	r1,#0x2B,00108$
+      000067 74 01            [12]  185 	mov	a,#0x01
+      000069 2A               [12]  186 	add	a,r2
+      00006A F5*00            [12]  187 	mov	_atof_s_1_35,a
+      00006C E4               [12]  188 	clr	a
+      00006D 3B               [12]  189 	addc	a,r3
+      00006E F5*01            [12]  190 	mov	(_atof_s_1_35 + 1),a
+      000070 8C*02            [24]  191 	mov	(_atof_s_1_35 + 2),r4
+      000072                        192 00108$:
+                                    193 ;	_atof.c:55: for (value=0.0; isdigit(*s); s++)
+      000072 E4               [12]  194 	clr	a
+      000073 F5*03            [12]  195 	mov	_atof_value_1_36,a
+      000075 F5*04            [12]  196 	mov	(_atof_value_1_36 + 1),a
+      000077 F5*05            [12]  197 	mov	(_atof_value_1_36 + 2),a
+      000079 F5*06            [12]  198 	mov	(_atof_value_1_36 + 3),a
+      00007B A8*00            [24]  199 	mov	r0,_atof_s_1_35
+      00007D AE*01            [24]  200 	mov	r6,(_atof_s_1_35 + 1)
+      00007F AF*02            [24]  201 	mov	r7,(_atof_s_1_35 + 2)
+      000081                        202 00124$:
+      000081 88 82            [24]  203 	mov	dpl,r0
+      000083 8E 83            [24]  204 	mov	dph,r6
+      000085 8F F0            [24]  205 	mov	b,r7
+      000087 12r00r00         [24]  206 	lcall	__gptrget
+      00008A FC               [12]  207 	mov	r4,a
+      00008B 33               [12]  208 	rlc	a
+      00008C 95 E0            [12]  209 	subb	a,acc
+      00008E FD               [12]  210 	mov	r5,a
+      00008F 8C 82            [24]  211 	mov	dpl,r4
+      000091 8D 83            [24]  212 	mov	dph,r5
+      000093 C0 07            [24]  213 	push	ar7
+      000095 C0 06            [24]  214 	push	ar6
+      000097 C0 00            [24]  215 	push	ar0
+      000099 12r00r00         [24]  216 	lcall	_isdigit
+      00009C E5 82            [12]  217 	mov	a,dpl
+      00009E 85 83 F0         [24]  218 	mov	b,dph
+      0000A1 D0 00            [24]  219 	pop	ar0
+      0000A3 D0 06            [24]  220 	pop	ar6
+      0000A5 D0 07            [24]  221 	pop	ar7
+      0000A7 45 F0            [12]  222 	orl	a,b
+      0000A9 70 03            [24]  223 	jnz	00182$
+      0000AB 02r01r3C         [24]  224 	ljmp	00146$
+      0000AE                        225 00182$:
+                                    226 ;	_atof.c:57: value=10.0*value+(*s-'0');
+      0000AE C0 07            [24]  227 	push	ar7
+      0000B0 C0 06            [24]  228 	push	ar6
+      0000B2 C0 00            [24]  229 	push	ar0
+      0000B4 C0*03            [24]  230 	push	_atof_value_1_36
+      0000B6 C0*04            [24]  231 	push	(_atof_value_1_36 + 1)
+      0000B8 C0*05            [24]  232 	push	(_atof_value_1_36 + 2)
+      0000BA C0*06            [24]  233 	push	(_atof_value_1_36 + 3)
+      0000BC 90 00 00         [24]  234 	mov	dptr,#0x0000
+      0000BF 75 F0 20         [24]  235 	mov	b,#0x20
+      0000C2 74 41            [12]  236 	mov	a,#0x41
+      0000C4 12r00r00         [24]  237 	lcall	___fsmul
+      0000C7 85 82*0B         [24]  238 	mov	_atof_sloc0_1_0,dpl
+      0000CA 85 83*0C         [24]  239 	mov	(_atof_sloc0_1_0 + 1),dph
+      0000CD 85 F0*0D         [24]  240 	mov	(_atof_sloc0_1_0 + 2),b
+      0000D0 F5*0E            [12]  241 	mov	(_atof_sloc0_1_0 + 3),a
+      0000D2 E5 81            [12]  242 	mov	a,sp
+      0000D4 24 FC            [12]  243 	add	a,#0xfc
+      0000D6 F5 81            [12]  244 	mov	sp,a
+      0000D8 D0 00            [24]  245 	pop	ar0
+      0000DA D0 06            [24]  246 	pop	ar6
+      0000DC D0 07            [24]  247 	pop	ar7
+      0000DE 88 82            [24]  248 	mov	dpl,r0
+      0000E0 8E 83            [24]  249 	mov	dph,r6
+      0000E2 8F F0            [24]  250 	mov	b,r7
+      0000E4 12r00r00         [24]  251 	lcall	__gptrget
+      0000E7 F9               [12]  252 	mov	r1,a
+      0000E8 A3               [24]  253 	inc	dptr
+      0000E9 A8 82            [24]  254 	mov	r0,dpl
+      0000EB AE 83            [24]  255 	mov	r6,dph
+      0000ED E9               [12]  256 	mov	a,r1
+      0000EE 33               [12]  257 	rlc	a
+      0000EF 95 E0            [12]  258 	subb	a,acc
+      0000F1 FD               [12]  259 	mov	r5,a
+      0000F2 E9               [12]  260 	mov	a,r1
+      0000F3 24 D0            [12]  261 	add	a,#0xD0
+      0000F5 F5 82            [12]  262 	mov	dpl,a
+      0000F7 ED               [12]  263 	mov	a,r5
+      0000F8 34 FF            [12]  264 	addc	a,#0xFF
+      0000FA F5 83            [12]  265 	mov	dph,a
+      0000FC C0 07            [24]  266 	push	ar7
+      0000FE C0 06            [24]  267 	push	ar6
+      000100 C0 00            [24]  268 	push	ar0
+      000102 12r00r00         [24]  269 	lcall	___sint2fs
+      000105 AA 82            [24]  270 	mov	r2,dpl
+      000107 AB 83            [24]  271 	mov	r3,dph
+      000109 AC F0            [24]  272 	mov	r4,b
+      00010B FD               [12]  273 	mov	r5,a
+      00010C C0 02            [24]  274 	push	ar2
+      00010E C0 03            [24]  275 	push	ar3
+      000110 C0 04            [24]  276 	push	ar4
+      000112 C0 05            [24]  277 	push	ar5
+      000114 85*0B 82         [24]  278 	mov	dpl,_atof_sloc0_1_0
+      000117 85*0C 83         [24]  279 	mov	dph,(_atof_sloc0_1_0 + 1)
+      00011A 85*0D F0         [24]  280 	mov	b,(_atof_sloc0_1_0 + 2)
+      00011D E5*0E            [12]  281 	mov	a,(_atof_sloc0_1_0 + 3)
+      00011F 12r00r00         [24]  282 	lcall	___fsadd
+      000122 85 82*03         [24]  283 	mov	_atof_value_1_36,dpl
+      000125 85 83*04         [24]  284 	mov	(_atof_value_1_36 + 1),dph
+      000128 85 F0*05         [24]  285 	mov	(_atof_value_1_36 + 2),b
+      00012B F5*06            [12]  286 	mov	(_atof_value_1_36 + 3),a
+      00012D E5 81            [12]  287 	mov	a,sp
+      00012F 24 FC            [12]  288 	add	a,#0xfc
+      000131 F5 81            [12]  289 	mov	sp,a
+      000133 D0 00            [24]  290 	pop	ar0
+      000135 D0 06            [24]  291 	pop	ar6
+      000137 D0 07            [24]  292 	pop	ar7
+                                    293 ;	_atof.c:55: for (value=0.0; isdigit(*s); s++)
+      000139 02r00r81         [24]  294 	ljmp	00124$
+      00013C                        295 00146$:
+      00013C 88*00            [24]  296 	mov	_atof_s_1_35,r0
+      00013E 8E*01            [24]  297 	mov	(_atof_s_1_35 + 1),r6
+      000140 8F*02            [24]  298 	mov	(_atof_s_1_35 + 2),r7
+                                    299 ;	_atof.c:61: if (*s == '.')
+      000142 88 82            [24]  300 	mov	dpl,r0
+      000144 8E 83            [24]  301 	mov	dph,r6
+      000146 8F F0            [24]  302 	mov	b,r7
+      000148 12r00r00         [24]  303 	lcall	__gptrget
+      00014B FD               [12]  304 	mov	r5,a
+      00014C BD 2E 02         [24]  305 	cjne	r5,#0x2E,00183$
+      00014F 80 03            [24]  306 	sjmp	00184$
+      000151                        307 00183$:
+      000151 02r02r45         [24]  308 	ljmp	00112$
+      000154                        309 00184$:
+                                    310 ;	_atof.c:63: s++;
+      000154 74 01            [12]  311 	mov	a,#0x01
+      000156 28               [12]  312 	add	a,r0
+      000157 F5*00            [12]  313 	mov	_atof_s_1_35,a
+      000159 E4               [12]  314 	clr	a
+      00015A 3E               [12]  315 	addc	a,r6
+      00015B F5*01            [12]  316 	mov	(_atof_s_1_35 + 1),a
+      00015D 8F*02            [24]  317 	mov	(_atof_s_1_35 + 2),r7
+                                    318 ;	_atof.c:64: for (fraction=0.1; isdigit(*s); s++)
+      00015F 75*07 CD         [24]  319 	mov	_atof_fraction_1_36,#0xCD
+      000162 75*08 CC         [24]  320 	mov	(_atof_fraction_1_36 + 1),#0xCC
+      000165 75*09 CC         [24]  321 	mov	(_atof_fraction_1_36 + 2),#0xCC
+      000168 75*0A 3D         [24]  322 	mov	(_atof_fraction_1_36 + 3),#0x3D
+      00016B A9*00            [24]  323 	mov	r1,_atof_s_1_35
+      00016D AA*01            [24]  324 	mov	r2,(_atof_s_1_35 + 1)
+      00016F AB*02            [24]  325 	mov	r3,(_atof_s_1_35 + 2)
+      000171                        326 00127$:
+      000171 89 82            [24]  327 	mov	dpl,r1
+      000173 8A 83            [24]  328 	mov	dph,r2
+      000175 8B F0            [24]  329 	mov	b,r3
+      000177 12r00r00         [24]  330 	lcall	__gptrget
+      00017A F8               [12]  331 	mov	r0,a
+      00017B 33               [12]  332 	rlc	a
+      00017C 95 E0            [12]  333 	subb	a,acc
+      00017E FF               [12]  334 	mov	r7,a
+      00017F 88 82            [24]  335 	mov	dpl,r0
+      000181 8F 83            [24]  336 	mov	dph,r7
+      000183 C0 03            [24]  337 	push	ar3
+      000185 C0 02            [24]  338 	push	ar2
+      000187 C0 01            [24]  339 	push	ar1
+      000189 12r00r00         [24]  340 	lcall	_isdigit
+      00018C E5 82            [12]  341 	mov	a,dpl
+      00018E 85 83 F0         [24]  342 	mov	b,dph
+      000191 D0 01            [24]  343 	pop	ar1
+      000193 D0 02            [24]  344 	pop	ar2
+      000195 D0 03            [24]  345 	pop	ar3
+      000197 45 F0            [12]  346 	orl	a,b
+      000199 70 03            [24]  347 	jnz	00185$
+      00019B 02r02r3F         [24]  348 	ljmp	00147$
+      00019E                        349 00185$:
+                                    350 ;	_atof.c:66: value+=(*s-'0')*fraction;
+      00019E 89 82            [24]  351 	mov	dpl,r1
+      0001A0 8A 83            [24]  352 	mov	dph,r2
+      0001A2 8B F0            [24]  353 	mov	b,r3
+      0001A4 12r00r00         [24]  354 	lcall	__gptrget
+      0001A7 FF               [12]  355 	mov	r7,a
+      0001A8 A3               [24]  356 	inc	dptr
+      0001A9 A9 82            [24]  357 	mov	r1,dpl
+      0001AB AA 83            [24]  358 	mov	r2,dph
+      0001AD EF               [12]  359 	mov	a,r7
+      0001AE 33               [12]  360 	rlc	a
+      0001AF 95 E0            [12]  361 	subb	a,acc
+      0001B1 FE               [12]  362 	mov	r6,a
+      0001B2 EF               [12]  363 	mov	a,r7
+      0001B3 24 D0            [12]  364 	add	a,#0xD0
+      0001B5 F5 82            [12]  365 	mov	dpl,a
+      0001B7 EE               [12]  366 	mov	a,r6
+      0001B8 34 FF            [12]  367 	addc	a,#0xFF
+      0001BA F5 83            [12]  368 	mov	dph,a
+      0001BC C0 03            [24]  369 	push	ar3
+      0001BE C0 02            [24]  370 	push	ar2
+      0001C0 C0 01            [24]  371 	push	ar1
+      0001C2 12r00r00         [24]  372 	lcall	___sint2fs
+      0001C5 AC 82            [24]  373 	mov	r4,dpl
+      0001C7 AD 83            [24]  374 	mov	r5,dph
+      0001C9 AE F0            [24]  375 	mov	r6,b
+      0001CB FF               [12]  376 	mov	r7,a
+      0001CC C0*07            [24]  377 	push	_atof_fraction_1_36
+      0001CE C0*08            [24]  378 	push	(_atof_fraction_1_36 + 1)
+      0001D0 C0*09            [24]  379 	push	(_atof_fraction_1_36 + 2)
+      0001D2 C0*0A            [24]  380 	push	(_atof_fraction_1_36 + 3)
+      0001D4 8C 82            [24]  381 	mov	dpl,r4
+      0001D6 8D 83            [24]  382 	mov	dph,r5
+      0001D8 8E F0            [24]  383 	mov	b,r6
+      0001DA EF               [12]  384 	mov	a,r7
+      0001DB 12r00r00         [24]  385 	lcall	___fsmul
+      0001DE AC 82            [24]  386 	mov	r4,dpl
+      0001E0 AD 83            [24]  387 	mov	r5,dph
+      0001E2 AE F0            [24]  388 	mov	r6,b
+      0001E4 FF               [12]  389 	mov	r7,a
+      0001E5 E5 81            [12]  390 	mov	a,sp
+      0001E7 24 FC            [12]  391 	add	a,#0xfc
+      0001E9 F5 81            [12]  392 	mov	sp,a
+      0001EB C0 04            [24]  393 	push	ar4
+      0001ED C0 05            [24]  394 	push	ar5
+      0001EF C0 06            [24]  395 	push	ar6
+      0001F1 C0 07            [24]  396 	push	ar7
+      0001F3 85*03 82         [24]  397 	mov	dpl,_atof_value_1_36
+      0001F6 85*04 83         [24]  398 	mov	dph,(_atof_value_1_36 + 1)
+      0001F9 85*05 F0         [24]  399 	mov	b,(_atof_value_1_36 + 2)
+      0001FC E5*06            [12]  400 	mov	a,(_atof_value_1_36 + 3)
+      0001FE 12r00r00         [24]  401 	lcall	___fsadd
+      000201 85 82*03         [24]  402 	mov	_atof_value_1_36,dpl
+      000204 85 83*04         [24]  403 	mov	(_atof_value_1_36 + 1),dph
+      000207 85 F0*05         [24]  404 	mov	(_atof_value_1_36 + 2),b
+      00020A F5*06            [12]  405 	mov	(_atof_value_1_36 + 3),a
+      00020C E5 81            [12]  406 	mov	a,sp
+      00020E 24 FC            [12]  407 	add	a,#0xfc
+      000210 F5 81            [12]  408 	mov	sp,a
+                                    409 ;	_atof.c:67: fraction*=0.1;
+      000212 C0*07            [24]  410 	push	_atof_fraction_1_36
+      000214 C0*08            [24]  411 	push	(_atof_fraction_1_36 + 1)
+      000216 C0*09            [24]  412 	push	(_atof_fraction_1_36 + 2)
+      000218 C0*0A            [24]  413 	push	(_atof_fraction_1_36 + 3)
+      00021A 90 CC CD         [24]  414 	mov	dptr,#0xCCCD
+      00021D 75 F0 CC         [24]  415 	mov	b,#0xCC
+      000220 74 3D            [12]  416 	mov	a,#0x3D
+      000222 12r00r00         [24]  417 	lcall	___fsmul
+      000225 85 82*07         [24]  418 	mov	_atof_fraction_1_36,dpl
+      000228 85 83*08         [24]  419 	mov	(_atof_fraction_1_36 + 1),dph
+      00022B 85 F0*09         [24]  420 	mov	(_atof_fraction_1_36 + 2),b
+      00022E F5*0A            [12]  421 	mov	(_atof_fraction_1_36 + 3),a
+      000230 E5 81            [12]  422 	mov	a,sp
+      000232 24 FC            [12]  423 	add	a,#0xfc
+      000234 F5 81            [12]  424 	mov	sp,a
+      000236 D0 01            [24]  425 	pop	ar1
+      000238 D0 02            [24]  426 	pop	ar2
+      00023A D0 03            [24]  427 	pop	ar3
+                                    428 ;	_atof.c:64: for (fraction=0.1; isdigit(*s); s++)
+      00023C 02r01r71         [24]  429 	ljmp	00127$
+      00023F                        430 00147$:
+      00023F 89*00            [24]  431 	mov	_atof_s_1_35,r1
+      000241 8A*01            [24]  432 	mov	(_atof_s_1_35 + 1),r2
+      000243 8B*02            [24]  433 	mov	(_atof_s_1_35 + 2),r3
+      000245                        434 00112$:
+                                    435 ;	_atof.c:72: if (toupper(*s)=='E')
+      000245 85*00 82         [24]  436 	mov	dpl,_atof_s_1_35
+      000248 85*01 83         [24]  437 	mov	dph,(_atof_s_1_35 + 1)
+      00024B 85*02 F0         [24]  438 	mov	b,(_atof_s_1_35 + 2)
+      00024E 12r00r00         [24]  439 	lcall	__gptrget
+      000251 FF               [12]  440 	mov	r7,a
+      000252 33               [12]  441 	rlc	a
+      000253 95 E0            [12]  442 	subb	a,acc
+      000255 FE               [12]  443 	mov	r6,a
+      000256 8F 82            [24]  444 	mov	dpl,r7
+      000258 8E 83            [24]  445 	mov	dph,r6
+      00025A 12r00r00         [24]  446 	lcall	_toupper
+      00025D AE 82            [24]  447 	mov	r6,dpl
+      00025F AF 83            [24]  448 	mov	r7,dph
+      000261 BE 45 78         [24]  449 	cjne	r6,#0x45,00120$
+      000264 BF 00 75         [24]  450 	cjne	r7,#0x00,00120$
+                                    451 ;	_atof.c:74: s++;
+      000267 05*00            [12]  452 	inc	_atof_s_1_35
+      000269 E4               [12]  453 	clr	a
+      00026A B5*00 02         [24]  454 	cjne	a,_atof_s_1_35,00188$
+      00026D 05*01            [12]  455 	inc	(_atof_s_1_35 + 1)
+      00026F                        456 00188$:
+                                    457 ;	_atof.c:75: iexp=(signed char)atoi(s);
+      00026F 85*00 82         [24]  458 	mov	dpl,_atof_s_1_35
+      000272 85*01 83         [24]  459 	mov	dph,(_atof_s_1_35 + 1)
+      000275 85*02 F0         [24]  460 	mov	b,(_atof_s_1_35 + 2)
+      000278 12r00r00         [24]  461 	lcall	_atoi
+      00027B AE 82            [24]  462 	mov	r6,dpl
+      00027D AF 83            [24]  463 	mov	r7,dph
+                                    464 ;	_atof.c:77: while(iexp!=0)
+      00027F                        465 00116$:
+      00027F EE               [12]  466 	mov	a,r6
+      000280 60 5A            [24]  467 	jz	00120$
+                                    468 ;	_atof.c:79: if(iexp<0)
+      000282 EE               [12]  469 	mov	a,r6
+      000283 30 E7 2B         [24]  470 	jnb	acc.7,00114$
+                                    471 ;	_atof.c:81: value*=0.1;
+      000286 C0 06            [24]  472 	push	ar6
+      000288 C0*03            [24]  473 	push	_atof_value_1_36
+      00028A C0*04            [24]  474 	push	(_atof_value_1_36 + 1)
+      00028C C0*05            [24]  475 	push	(_atof_value_1_36 + 2)
+      00028E C0*06            [24]  476 	push	(_atof_value_1_36 + 3)
+      000290 90 CC CD         [24]  477 	mov	dptr,#0xCCCD
+      000293 75 F0 CC         [24]  478 	mov	b,#0xCC
+      000296 74 3D            [12]  479 	mov	a,#0x3D
+      000298 12r00r00         [24]  480 	lcall	___fsmul
+      00029B 85 82*03         [24]  481 	mov	_atof_value_1_36,dpl
+      00029E 85 83*04         [24]  482 	mov	(_atof_value_1_36 + 1),dph
+      0002A1 85 F0*05         [24]  483 	mov	(_atof_value_1_36 + 2),b
+      0002A4 F5*06            [12]  484 	mov	(_atof_value_1_36 + 3),a
+      0002A6 E5 81            [12]  485 	mov	a,sp
+      0002A8 24 FC            [12]  486 	add	a,#0xfc
+      0002AA F5 81            [12]  487 	mov	sp,a
+      0002AC D0 06            [24]  488 	pop	ar6
+                                    489 ;	_atof.c:82: iexp++;
+      0002AE 0E               [12]  490 	inc	r6
+      0002AF 80 CE            [24]  491 	sjmp	00116$
+      0002B1                        492 00114$:
+                                    493 ;	_atof.c:86: value*=10.0;
+      0002B1 C0 06            [24]  494 	push	ar6
+      0002B3 C0*03            [24]  495 	push	_atof_value_1_36
+      0002B5 C0*04            [24]  496 	push	(_atof_value_1_36 + 1)
+      0002B7 C0*05            [24]  497 	push	(_atof_value_1_36 + 2)
+      0002B9 C0*06            [24]  498 	push	(_atof_value_1_36 + 3)
+      0002BB 90 00 00         [24]  499 	mov	dptr,#0x0000
+      0002BE 75 F0 20         [24]  500 	mov	b,#0x20
+      0002C1 74 41            [12]  501 	mov	a,#0x41
+      0002C3 12r00r00         [24]  502 	lcall	___fsmul
+      0002C6 85 82*03         [24]  503 	mov	_atof_value_1_36,dpl
+      0002C9 85 83*04         [24]  504 	mov	(_atof_value_1_36 + 1),dph
+      0002CC 85 F0*05         [24]  505 	mov	(_atof_value_1_36 + 2),b
+      0002CF F5*06            [12]  506 	mov	(_atof_value_1_36 + 3),a
+      0002D1 E5 81            [12]  507 	mov	a,sp
+      0002D3 24 FC            [12]  508 	add	a,#0xfc
+      0002D5 F5 81            [12]  509 	mov	sp,a
+      0002D7 D0 06            [24]  510 	pop	ar6
+                                    511 ;	_atof.c:87: iexp--;
+      0002D9 1E               [12]  512 	dec	r6
+      0002DA 80 A3            [24]  513 	sjmp	00116$
+      0002DC                        514 00120$:
+                                    515 ;	_atof.c:93: if(sign) value*=-1.0;
+      0002DC 30*00 06         [24]  516 	jnb	_atof_sign_1_36,00122$
+      0002DF E5*06            [12]  517 	mov	a,(_atof_value_1_36 + 3)
+      0002E1 B2 E7            [12]  518 	cpl	acc.7
+      0002E3 F5*06            [12]  519 	mov	(_atof_value_1_36 + 3),a
+      0002E5                        520 00122$:
+                                    521 ;	_atof.c:94: return (value);
+      0002E5 85*03 82         [24]  522 	mov	dpl,_atof_value_1_36
+      0002E8 85*04 83         [24]  523 	mov	dph,(_atof_value_1_36 + 1)
+      0002EB 85*05 F0         [24]  524 	mov	b,(_atof_value_1_36 + 2)
+      0002EE E5*06            [12]  525 	mov	a,(_atof_value_1_36 + 3)
+      0002F0 22               [24]  526 	ret
+                                    527 	.area CSEG    (CODE)
+                                    528 	.area CONST   (CODE)
+                                    529 	.area XINIT   (CODE)
+                                    530 	.area CABS    (ABS,CODE)

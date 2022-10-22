@@ -1,0 +1,37 @@
+XL2
+H 9 areas 4 global symbols
+M tolower
+O -mtlcs90
+S .__.ABS. Def0000
+A _CODE size 28 flags 0 addr 0
+S _tolower_end Def0028
+S _tolower Def0000
+S _tolower_start Def0000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 0 flags 0 addr 0
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 0 flags 0 addr 0
+A _CABS size 0 flags 8 addr 0
+T 00 00
+R 00 00 00 00
+T 00 00
+R 00 00 00 00
+T 00 00 9E F2 03 4A 25 6A 41 24 A2 0E A3 6B 80 C7
+R 00 00 00 00
+T 0E 00 17 36 5A FD 67 36 00 FC 63 EB 1D 00 CC 6D
+R 00 00 00 00 00 0C 00 00
+T 1C 00 80
+R 00 00 00 00
+T 1D 00
+R 00 00 00 00
+T 1D 00 EB 26 00 C5 38 20 00 F8 70
+R 00 00 00 00 00 03 00 00
+T 26 00
+R 00 00 00 00
+T 26 00 96 1E
+R 00 00 00 00
+T 28 00
+R 00 00 00 00

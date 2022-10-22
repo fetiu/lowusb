@@ -1,0 +1,83 @@
+                              1 ;--------------------------------------------------------------------------
+                              2 ;  mulchar.s
+                              3 ;
+                              4 ;  Copyright (C) 2009, Philipp Klaus Krause
+                              5 ;
+                              6 ;  This library is free software; you can redistribute it and/or modify it
+                              7 ;  under the terms of the GNU General Public License as published by the
+                              8 ;  Free Software Foundation; either version 2, or (at your option) any
+                              9 ;  later version.
+                             10 ;
+                             11 ;  This library is distributed in the hope that it will be useful,
+                             12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                             14 ;  GNU General Public License for more details.
+                             15 ;
+                             16 ;  You should have received a copy of the GNU General Public License 
+                             17 ;  along with this library; see the file COPYING. If not, write to the
+                             18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                             19 ;   MA 02110-1301, USA.
+                             20 ;
+                             21 ;  As a special exception, if you link this library with other files,
+                             22 ;  some of which are compiled with SDCC, to produce an executable,
+                             23 ;  this library does not by itself cause the resulting executable to
+                             24 ;  be covered by the GNU General Public License. This exception does
+                             25 ;  not however invalidate any other reasons why the executable file
+                             26 ;   might be covered by the GNU General Public License.
+                             27 ;--------------------------------------------------------------------------
+                             28 
+                             29 .area   _CODE
+                             30 
+                             31 ; unsigned char x unsigned char multiplication is done by code generation.
+                             32 
+                             33 .globl	__mulsuchar
+                             34 .globl	__muluschar
+                             35 .globl	__mulschar
+                             36 
+                             37 ; operands have different sign
+                             38 
+   0000                      39 __mulsuchar:
+   0000 3A 03 00      [13]   40         ld      hl,#2+1
+   0003 FC 30         [17]   41         ld      b, h
+   0005 FE 70         [ 7]   42         add     hl,sp
+                             43 
+   0007 E2 2B         [10]   44         ld      e,(hl)
+   0009 9A            [ 4]   45         dec     hl
+   000A E2 29         [10]   46         ld      c,(hl)
+   000C C8 1F         [11]   47         jr      signexte
+                             48 
+   000E                      49 __muluschar:
+   000E 3A 02 00      [13]   50         ld      hl,#2
+   0011 FC 30         [17]   51         ld      b, h
+   0013 FE 70         [ 7]   52         add     hl,sp
+                             53 
+   0015 E2 2B         [10]   54         ld      e,(hl)
+   0017 92            [ 4]   55         inc     hl
+   0018 E2 29         [10]   56         ld      c,(hl)
+   001A C8 11         [11]   57         jr      signexte
+                             58 
+                             59 ;; Originally from GBDK by Pascal Felber.
+                             60 
+   001C                      61 __mulschar:
+   001C 3A 03 00      [13]   62         ld      hl,#2+1
+   001F FE 70         [ 7]   63         add     hl,sp
+                             64 
+   0021 E2 2B         [10]   65         ld      e,(hl)
+   0023 9A            [ 4]   66         dec     hl
+   0024 E2 2D         [10]   67         ld      l,(hl)
+                             68 
+                             69         ;; Need to sign extend before going in.
+   0026 FD 31                70         ld      c,l
+                             71 
+   0028 25            [ 4]   72         ld      a,l
+   0029 A2            [ 4]   73         rla
+   002A FE 63         [ 7]   74         sbc     a,a
+   002C 28            [12]   75         ld      b,a
+   002D                      76 signexte:
+   002D 23            [ 6]   77         ld      a,e
+   002E A2            [ 4]   78         rla
+   002F FE 63         [ 7]   79         sbc     a,a
+   0031 2A            [16]   80         ld      d,a
+                             81 
+   0032 1Ar00r00      [ 7]   82         jp      __mul16
+                             83 

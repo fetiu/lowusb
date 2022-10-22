@@ -1,0 +1,189 @@
+                              1 ;--------------------------------------------------------
+                              2 ; File Created by SDCC : free open source ANSI-C Compiler
+                              3 ; Version 3.4.1 #9092 (Oct 23 2022) (Mac OS X x86_64)
+                              4 ; This file was generated Sun Oct 23 01:39:51 2022
+                              5 ;--------------------------------------------------------
+                              6 	.module _mullonglong
+                              7 	.optsdcc -mtlcs90
+                              8 	
+                              9 ;--------------------------------------------------------
+                             10 ; Public variables in this module
+                             11 ;--------------------------------------------------------
+                             12 	.globl __mullonglong
+                             13 ;--------------------------------------------------------
+                             14 ; ram data
+                             15 ;--------------------------------------------------------
+                             16 	.area _DATA
+                             17 ;--------------------------------------------------------
+                             18 ; ram data
+                             19 ;--------------------------------------------------------
+                             20 	.area _INITIALIZED
+                             21 ;--------------------------------------------------------
+                             22 ; absolute external ram data
+                             23 ;--------------------------------------------------------
+                             24 	.area _DABS (ABS)
+                             25 ;--------------------------------------------------------
+                             26 ; global & static initialisations
+                             27 ;--------------------------------------------------------
+                             28 	.area _HOME
+                             29 	.area _GSINIT
+                             30 	.area _GSFINAL
+                             31 	.area _GSINIT
+                             32 ;--------------------------------------------------------
+                             33 ; Home
+                             34 ;--------------------------------------------------------
+                             35 	.area _HOME
+                             36 ;../_mullonglong.c:35: long long _mullonglong(long long ll, long long lr)
+                             37 ;	---------------------------------
+                             38 ; Function _mullonglong
+                             39 ; ---------------------------------
+   0000                      40 __mullonglong_start::
+   0000                      41 __mullonglong:
+   0000 54            [ 4]   42 	push	ix
+   0001 3C 00 00      [ 4]   43 	ld	ix,#0
+   0004 FE 14         [ 7]   44 	add	ix,sp
+   0006 16 E4 FF      [ 7]   45 	add	sp, #-28
+                             46 ;../_mullonglong.c:37: unsigned long long ret = 0ull;
+   0009 FE 65         [ 7]   47 	xor	a, a
+   000B F4 EA 26      [17]   48 	ld	-22 (ix),a
+   000E F4 EB 26      [17]   49 	ld	-21 (ix),a
+   0011 F4 EC 26      [17]   50 	ld	-20 (ix),a
+   0014 F4 ED 26      [17]   51 	ld	-19 (ix),a
+   0017 F4 EE 26      [17]   52 	ld	-18 (ix),a
+   001A F4 EF 26      [17]   53 	ld	-17 (ix),a
+   001D F4 F0 26      [17]   54 	ld	-16 (ix),a
+   0020 F4 F1 26      [17]   55 	ld	-15 (ix),a
+                             56 ;../_mullonglong.c:38: unsigned char *l = (unsigned char *)(&ll);
+   0023 3A 22 00      [13]   57 	ld	hl,#0x0022
+   0026 FE 70         [ 7]   58 	add	hl,sp
+   0028 F6 04 42      [ 7]   59 	ld	4 (sp), hl
+                             60 ;../_mullonglong.c:39: unsigned char *r = (unsigned char *)(&lr);
+   002B 3A 2A 00      [13]   61 	ld	hl,#0x002A
+   002E FE 70         [ 7]   62 	add	hl,sp
+   0030 F6 02 42      [ 7]   63 	ld	2 (sp), hl
+                             64 ;../_mullonglong.c:42: for (i = 0; i < sizeof (long long); i++)
+   0033 F4 E5 37 00   [17]   65 	ld	-27 (ix),#0x00
+                             66 ;../_mullonglong.c:44: for(j = 0; (i + j) < sizeof (long long); j++)
+   0037                      67 00111$:
+   0037 F0 E8 2E      [11]   68 	ld	a,-24 (ix)
+   003A F0 E5 60      [11]   69 	add	a, -27 (ix)
+   003D F4 FE 26      [17]   70 	ld	-2 (ix),a
+   0040 F0 E9 2E      [11]   71 	ld	a,-23 (ix)
+   0043 69 00         [ 4]   72 	adc	a, #0x00
+   0045 F4 FF 26      [17]   73 	ld	-1 (ix),a
+   0048 F4 E4 37 00   [17]   74 	ld	-28 (ix),#0x00
+   004C                      75 00104$:
+   004C F0 E5 2E      [11]   76 	ld	a,-27 (ix)
+   004F F4 FC 26      [17]   77 	ld	-4 (ix),a
+   0052 F4 FD 37 00   [17]   78 	ld	-3 (ix),#0x00
+   0056 F0 E4 2E      [11]   79 	ld	a,-28 (ix)
+   0059 F4 FA 26      [17]   80 	ld	-6 (ix),a
+   005C F4 FB 37 00   [17]   81 	ld	-5 (ix),#0x00
+   0060 F0 FC 2E      [11]   82 	ld	a,-4 (ix)
+   0063 F0 FA 60      [11]   83 	add	a, -6 (ix)
+   0066 F4 FA 26      [17]   84 	ld	-6 (ix),a
+   0069 F0 FD 2E      [11]   85 	ld	a,-3 (ix)
+   006C F0 FB 61      [11]   86 	adc	a, -5 (ix)
+   006F F4 FB 26      [17]   87 	ld	-5 (ix),a
+   0072 F0 FA 2E      [11]   88 	ld	a,-6 (ix)
+   0075 6A 08         [ 4]   89 	sub	a, #0x08
+   0077 F0 FB 2E      [11]   90 	ld	a,-5 (ix)
+   007A A2            [ 4]   91 	rla
+   007B 0E            [ 7]   92 	ccf
+   007C A3            [ 4]   93 	rra
+   007D 6B 80         [ 4]   94 	sbc	a, #0x80
+   007F EBr22r01 CF   [ 4]   95 	jp	NC,00107$
+                             96 ;../_mullonglong.c:45: ret += ((unsigned short)(l[i] * r [j])) << ((i + j) * 8);
+   0083 F2 1A 4A      [10]   97 	ld	hl, 26 (sp)
+   0086 E2 2B         [10]   98 	ld	e,(hl)
+   0088 F2 02 4D      [10]   99 	ld	iy, 2 (sp)
+   008B F0 E4 29      [11]  100 	ld	c,-28 (ix)
+   008E 30 00         [12]  101 	ld	b,#0x00
+   0090 F8 15         [11]  102 	add	iy, bc
+   0092 E5 2C         [11]  103 	ld	h, 0 (iy)
+   0094 35 00         [11]  104 	ld	l, #0x00
+   0096 FD 32               105 	ld	d, l
+   0098 30 08         [12]  106 	ld	b, #0x08
+   009A                     107 00128$:
+   009A FA 70         [10]  108 	add	hl,hl
+   009C CF 02         [11]  109 	jr	NC,00129$
+   009E F9 70         [ 6]  110 	add	hl,de
+   00A0                     111 00129$:
+   00A0 18 F8         [12]  112 	djnz	00128$
+   00A2 08            [ 4]  113 	ex	de,hl
+   00A3 F2 16 4A      [10]  114 	ld	hl, 22 (sp)
+   00A6 FA 70         [10]  115 	add	hl, hl
+   00A8 FA 70         [10]  116 	add	hl, hl
+   00AA FA 70         [10]  117 	add	hl, hl
+   00AC 25            [ 4]  118 	ld	a,l
+   00AD 08            [ 4]  119 	ex	de,hl
+   00AE 86            [ 7]  120 	inc	a
+   00AF C8 02         [11]  121 	jr	00131$
+   00B1                     122 00130$:
+   00B1 FA 70         [10]  123 	add	hl, hl
+   00B3                     124 00131$:
+   00B3 8E            [ 7]  125 	dec	a
+   00B4 CE FB         [ 7]  126 	jr	NZ,00130$
+   00B6 F4 F2 25      [17]  127 	ld	-14 (ix),l
+   00B9 F4 F3 24      [17]  128 	ld	-13 (ix),h
+   00BC F4 F4 37 00   [17]  129 	ld	-12 (ix),#0x00
+   00C0 F4 F5 37 00   [17]  130 	ld	-11 (ix),#0x00
+   00C4 F4 F6 37 00   [17]  131 	ld	-10 (ix),#0x00
+   00C8 F4 F7 37 00   [17]  132 	ld	-9 (ix),#0x00
+   00CC F4 F8 37 00   [17]  133 	ld	-8 (ix),#0x00
+   00D0 F4 F9 37 00   [17]  134 	ld	-7 (ix),#0x00
+   00D4 F0 EA 2E      [11]  135 	ld	a,-22 (ix)
+   00D7 F0 F2 60      [11]  136 	add	a, -14 (ix)
+   00DA F4 EA 26      [17]  137 	ld	-22 (ix),a
+   00DD F0 EB 2E      [11]  138 	ld	a,-21 (ix)
+   00E0 F0 F3 61      [11]  139 	adc	a, -13 (ix)
+   00E3 F4 EB 26      [17]  140 	ld	-21 (ix),a
+   00E6 F0 EC 2E      [11]  141 	ld	a,-20 (ix)
+   00E9 F0 F4 61      [11]  142 	adc	a, -12 (ix)
+   00EC F4 EC 26      [17]  143 	ld	-20 (ix),a
+   00EF F0 ED 2E      [11]  144 	ld	a,-19 (ix)
+   00F2 F0 F5 61      [11]  145 	adc	a, -11 (ix)
+   00F5 F4 ED 26      [17]  146 	ld	-19 (ix),a
+   00F8 F0 EE 2E      [11]  147 	ld	a,-18 (ix)
+   00FB F0 F6 61      [11]  148 	adc	a, -10 (ix)
+   00FE F4 EE 26      [17]  149 	ld	-18 (ix),a
+   0101 F0 EF 2E      [11]  150 	ld	a,-17 (ix)
+   0104 F0 F7 61      [11]  151 	adc	a, -9 (ix)
+   0107 F4 EF 26      [17]  152 	ld	-17 (ix),a
+   010A F0 F0 2E      [11]  153 	ld	a,-16 (ix)
+   010D F0 F8 61      [11]  154 	adc	a, -8 (ix)
+   0110 F4 F0 26      [17]  155 	ld	-16 (ix),a
+   0113 F0 F1 2E      [11]  156 	ld	a,-15 (ix)
+   0116 F0 F9 61      [11]  157 	adc	a, -7 (ix)
+   0119 F4 F1 26      [17]  158 	ld	-15 (ix),a
+                            159 ;../_mullonglong.c:44: for(j = 0; (i + j) < sizeof (long long); j++)
+   011C F0 E4 87      [11]  160 	inc	-28 (ix)
+   011F 1Ar4Cr00      [ 7]  161 	jp	00104$
+   0122                     162 00107$:
+                            163 ;../_mullonglong.c:42: for (i = 0; i < sizeof (long long); i++)
+   0122 F0 E5 87      [11]  164 	inc	-27 (ix)
+   0125 F0 E5 2E      [11]  165 	ld	a,-27 (ix)
+   0128 6A 08         [ 4]  166 	sub	a, #0x08
+   012A EBr37r00 C7   [ 4]  167 	jp	C,00111$
+                            168 ;../_mullonglong.c:48: return(ret);
+   012E 3A 20 00      [13]  169 	ld	hl, #32
+   0131 FE 70         [ 7]  170 	add	hl, sp
+   0133 E2 2B         [10]  171 	ld	e, (hl)
+   0135 92            [ 4]  172 	inc	hl
+   0136 E2 2A         [10]  173 	ld	d, (hl)
+   0138 3A 06 00      [13]  174 	ld	hl, #6
+   013B FE 70         [ 7]  175 	add	hl, sp
+   013D 38 08 00      [12]  176 	ld	bc, #8
+   0140 FE 59         [ 7]  177 	ldir
+   0142 FC 3E         [17]  178 	ld	sp, ix
+   0144 5C            [ 4]  179 	pop	ix
+   0145 1E            [ 7]  180 	ret
+   0146                     181 __mullonglong_end::
+                            182 	.area _HOME
+                            183 ;--------------------------------------------------------
+                            184 ; code
+                            185 ;--------------------------------------------------------
+                            186 	.area _CODE
+                            187 	.area _CODE
+                            188 	.area _INITIALIZER
+                            189 	.area _CABS (ABS)

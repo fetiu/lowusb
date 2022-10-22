@@ -1,0 +1,33 @@
+XH3
+H A areas 3 global symbols
+M _slong2fs
+O -mstm8
+S ___ulong2fs Ref000000
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 2B flags 0 addr 0
+S ___slong2fs Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 0D 03 2A 1B 16 05 90 50 4F 12 04 97 4F
+R 00 00 00 07
+T 00 00 0D 12 03 95 90 89 89 CD 00 00 5B 04 51 58
+R 00 00 00 07 02 0A 00 00
+T 00 00 1A 8C 56 51 20 0B
+R 00 00 00 07
+T 00 00 1F
+R 00 00 00 07
+T 00 00 1F 1E 05 89 1E 05 89 CD 00 00 5B 04
+R 00 00 00 07 02 0A 00 00
+T 00 00 2A
+R 00 00 00 07
+T 00 00 2A 81
+R 00 00 00 07

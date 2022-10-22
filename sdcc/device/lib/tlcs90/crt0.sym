@@ -1,0 +1,65 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |     ADMOD   =  FFEF     |     ADREG   =  FFEE 
+    BX      =  FFEC     |     BY      =  FFED     |     CAL2H   =  FFDF 
+    CAP1H   =  FFDD     |     CAP1L   =  FFDC     |     CAP2L   =  FFDE 
+    DMAEH   =  FFE8     |     INTEH   =  FFE7     |     INTEL   =  FFE6 
+    IRFH    =  FFC3     |     IRFL    =  FFC2     |   2 L0         0000 R
+  2 L10        0010 R   |   2 L18        0018 R   |   2 L20        0020 R
+  2 L28        0028 R   |   2 L30        0030 R   |   2 L38        0038 R
+  2 L40        0040 R   |   2 L48        0048 R   |   2 L50        0050 R
+  2 L58        0058 R   |   2 L60        0060 R   |   2 L68        0068 R
+  2 L70        0070 R   |   2 L78        0078 R   |   2 L80        0080 R
+    P0      =  FFC0     |     P01CR   =  FFC2     |     P1      =  FFC1 
+    P2      =  FFC4     |     P2CR    =  FFC5     |     P3      =  FFC6 
+    P3CR    =  FFC7     |     P4      =  FFC8     |     P4CR    =  FFC9 
+    P5      =  FFCA     |     P6      =  FFCC     |     P67CR   =  FFCE 
+    P7      =  FFCD     |     P8      =  FFD0     |     P8CR    =  FFD1 
+    RX_READY=  0001     |     SCBUF   =  FFEB     |     SCCR    =  FFEA 
+    SCMOD   =  FFE9     |     SMCR    =  FFCF     |     SMMOD   =  FFCB 
+    T4FFCR  =  FFE5     |     T4MOD   =  FFE4     |     TCLK    =  FFD8 
+    TFFCR   =  FFD9     |     TMOD    =  FFDA     |     TREG0   =  FFD4 
+    TREG1   =  FFD5     |     TREG2   =  FFD6     |     TREG3   =  FFD7 
+    TREG4H  =  FFE1     |     TREG4L  =  FFE0     |     TREG5H  =  FFE3 
+    TREG5L  =  FFE2     |     TRUN    =  FFDB     |     TX_ACTIV=  0000 
+    WDCR    =  FFD3     |     WDMOD   =  FFD2     |   0 _WatchDo   009D R
+  3 _astart    0100 R   |   0 _int1_ir   0068 R   |   0 _intt0_i   0053 R
+  0 _intt1_i   0057 R   |   0 _intt3_i   0060 R   |   0 _intt4_i   0064 R
+  0 _intt5_i   006C R   |   0 _intwd_i   004F R   |     _irq_inf   **** GX
+    _irq_inf   **** GX  |     _irq_inf   **** GX  |     _irq_inf   **** GX
+    _irq_inf   **** GX  |     _irq_inf   **** GX  |     _irq_inf   **** GX
+    _irq_inf   **** GX  |     _main      **** GX  |     _meminit   **** GX
+    _ser_cha=  FFBE     |     _ser_irq=  FFBF     |   0 _ser_put   0073 R
+  0 _ser_put   0070 GR  |   0 _ser_put   008E GR  |   0 _serial_   0032 R
+  0 _serial_   0039 R   |     _swi_af =  FFBA     |   0 _swi_irq   003F R
+    _swi_pc =  FFBC     |     _ticks16=  FFB8 G   |     _timer1_   **** GX
+  0 _wd_rese   00A4 R   |     _xflag  =  FFB7 G   |   0 _xget_by   0000 GR
+  0 _xset_by   0019 GR  |     _xxaddr    **** GX  |     _xxby      **** GX
+    _xxdata    **** GX  |   3 clear_ra   014F R   |   6 gsinit     0000 GR
+  6 gsinit_n   0010 R   |     l__INITI   **** GX  |   0 loop1      0073 R
+    s__INITI   **** GX  |     s__INITI   **** GX  |   0 send1      0084 R
+  0 ser_puts   0091 R
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Toshiba TLCS90), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size   A8   flags    0
+   1 _HEADER    size    0   flags    8
+   2 _HEADER0   size   81   flags    8
+   3 _HEADER1   size   6C   flags    8
+   4 _HOME      size    0   flags    0
+   5 _INITIAL   size    0   flags    0
+   6 _GSINIT    size   10   flags    0
+   7 _GSFINAL   size    1   flags    0
+   8 _DATA      size    0   flags    0
+   9 _INITIAL   size    0   flags    0
+   A _BSEG      size    0   flags    0
+   B _BSS       size    0   flags    0
+   C _HEAP      size    0   flags    0
+

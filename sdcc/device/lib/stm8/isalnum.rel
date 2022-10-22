@@ -1,0 +1,35 @@
+XH3
+H A areas 3 global symbols
+M isalnum
+O -mstm8
+S _isalpha Ref000000
+S .__.ABS. Def000000
+A _CODE size 0 flags 0 addr 0
+A DATA size 0 flags 0 addr 0
+A INITIALIZED size 0 flags 0 addr 0
+A DABS size 0 flags 8 addr 0
+A HOME size 0 flags 0 addr 0
+A GSINIT size 0 flags 0 addr 0
+A GSFINAL size 0 flags 0 addr 0
+A CODE size 23 flags 0 addr 0
+S _isalnum Def000000
+A INITIALIZER size 0 flags 0 addr 0
+A CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 00 07
+T 00 00 00 1E 03 89 CD 00 00 5B 02 5D 26 0F 1E 03
+R 00 00 00 07 02 07 00 00
+T 00 00 0D A3 00 30 2F 05 A3 00 39 2D 03
+R 00 00 00 07
+T 00 00 17
+R 00 00 00 07
+T 00 00 17 4F 20 02
+R 00 00 00 07
+T 00 00 1A
+R 00 00 00 07
+T 00 00 1A A6 01
+R 00 00 00 07
+T 00 00 1C
+R 00 00 00 07
+T 00 00 1C 97 49 4F A2 00 95 81
+R 00 00 00 07

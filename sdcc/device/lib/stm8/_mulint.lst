@@ -1,0 +1,58 @@
+                                      1 ;--------------------------------------------------------------------------
+                                      2 ;  _mulint.s
+                                      3 ;
+                                      4 ;  Copyright (C) 2014, Krzysztof Nikiel, Ben Shi
+                                      5 ;
+                                      6 ;  This library is free software; you can redistribute it and/or modify it
+                                      7 ;  under the terms of the GNU General Public License as published by the
+                                      8 ;  Free Software Foundation; either version 2, or (at your option) any
+                                      9 ;  later version.
+                                     10 ;
+                                     11 ;  This library is distributed in the hope that it will be useful,
+                                     12 ;  but WITHOUT ANY WARRANTY; without even the implied warranty of
+                                     13 ;  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+                                     14 ;  GNU General Public License for more details.
+                                     15 ;
+                                     16 ;  You should have received a copy of the GNU General Public License 
+                                     17 ;  along with this library; see the file COPYING. If not, write to the
+                                     18 ;  Free Software Foundation, 51 Franklin Street, Fifth Floor, Boston,
+                                     19 ;   MA 02110-1301, USA.
+                                     20 ;
+                                     21 ;  As a special exception, if you link this library with other files,
+                                     22 ;  some of which are compiled with SDCC, to produce an executable,
+                                     23 ;  this library does not by itself cause the resulting executable to
+                                     24 ;  be covered by the GNU General Public License. This exception does
+                                     25 ;  not however invalidate any other reasons why the executable file
+                                     26 ;   might be covered by the GNU General Public License.
+                                     27 ;--------------------------------------------------------------------------
+                                     28 
+                                     29 	.globl __mulint
+                                     30 
+                                     31 	.area CODE
+      000000                         32 __mulint:
+      000000 89               [ 2]   33 	pushw x
+      000001                         34 __mulint_0:
+      000001 7B 06            [ 1]   35 	ld a, (#6, sp)
+      000003 97               [ 1]   36 	ld xl, a
+      000004 7B 08            [ 1]   37 	ld a, (#8, sp)
+      000006 42               [ 4]   38 	mul x, a
+      000007 1F 01            [ 2]   39 	ldw (#1, sp), x
+      000009                         40 __mulint_1:
+      000009 7B 06            [ 1]   41 	ld a, (#6, sp)
+      00000B 97               [ 1]   42 	ld xl, a
+      00000C 7B 07            [ 1]   43 	ld a, (#7, sp)
+      00000E 42               [ 4]   44 	mul x, a
+      00000F 9F               [ 1]   45 	ld a, xl
+      000010 1B 01            [ 1]   46 	add a, (#1, sp)
+      000012 6B 01            [ 1]   47 	ld (#1, sp), a
+      000014                         48 __mulint_2:
+      000014 7B 05            [ 1]   49 	ld a, (#5, sp)
+      000016 97               [ 1]   50 	ld xl, a
+      000017 7B 08            [ 1]   51 	ld a, (#8, sp)
+      000019 42               [ 4]   52 	mul x, a
+      00001A 9F               [ 1]   53 	ld a, xl
+      00001B 1B 01            [ 1]   54 	add a, (#1, sp)
+      00001D 6B 01            [ 1]   55 	ld (#1, sp), a
+      00001F                         56 __mulint_3:
+      00001F 85               [ 2]   57 	popw x
+      000020 81               [ 4]   58 	ret
