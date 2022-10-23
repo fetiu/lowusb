@@ -1,0 +1,6 @@
+[submodule "contiki"]
+	path = contiki
+	url = git@github.com:fetiu/contiki.git
+[submodule "cc-tool"]
+	path = cc-tool
+	url = https://github.com/dashesy/cc-tool.git
