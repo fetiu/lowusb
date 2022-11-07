@@ -4,3 +4,6 @@
 [submodule "cc-tool"]
 	path = cc-tool
 	url = https://github.com/dashesy/cc-tool.git
+[submodule "sdcc"]
+	path = sdcc
+	url = https://github.com/fetiu/sdcc-rev7100.git
