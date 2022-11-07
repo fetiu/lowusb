@@ -40,7 +40,7 @@ _divulonglong (unsigned long long x, unsigned long long y)
 {
   unsigned long long reste = 0L;
   unsigned char count = 64;
-  bool c;
+  unsigned char c;
 
   do
   {

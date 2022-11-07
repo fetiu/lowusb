@@ -3667,7 +3667,7 @@ genFunction (iCode * ic)
       rsavebits = bitVectIntersect (bitVectCopy (mcs51_allBitregs ()), sym->regsUsed);
       if (IFFUNC_HASFCALL (sym->type) || !bitVectIsZero (rsavebits))
         {
-          if (!inExcludeList ("bits"))
+          if(!inExcludeList("bits"))
             {
               emitpush ("bits");
               BitBankUsed = 1;
@@ -4280,7 +4280,7 @@ genEndFunction (iCode * ic)
       rsavebits = bitVectIntersect (bitVectCopy (mcs51_allBitregs ()), sym->regsUsed);
       if (IFFUNC_HASFCALL (sym->type) || !bitVectIsZero (rsavebits))
         {
-          if (!inExcludeList ("bits"))
+          if (!inExcludeList("bits"))
             emitpop ("bits");
         }
       freeBitVect (rsavebits);
