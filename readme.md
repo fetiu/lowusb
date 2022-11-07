@@ -43,8 +43,7 @@ CC2531 USB Dongle is based on Intel 8051, so it requires special c compiler call
 
 ```sh
 cd sdcc
-./configure --disable-gbz80-port --disable-z80-port --disable-ds390-port --disable-ds400-port --disable-pic14-port --disable-pic16-port --disable-hc08-port --disable-r2k-port --disable-z180-port --disable-sdcdb --disable-ucsim --disable-werror
-sudo make install
+./sdcc-contiki.sh
 ```
 
 > Refer below for troubleshooting
