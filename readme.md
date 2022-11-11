@@ -51,10 +51,10 @@ cd sdcc
 > - https://github.com/ekawahyu/sdcc-CC2530/blob/master/sdcc-build-osx.sh
 > - https://github.com/contiki-os/contiki/wiki/8051-Based-Platforms#guides
 
-## Build an exmaple
+## Build LoWUSB2Serial exmaple
 
 ```sh
-cd contiki/examples/cc2530dk
+cd contiki/examples/cc2530dk/udp-ipv6
 make
-cc-tool -ew blink-hello.hex
+make flash
 ```
